@@ -25,12 +25,12 @@ CREATE TABLE #DoctorsInfo(
 
 INSERT INTO #DoctorsInfo
 
-select D1.Dpctor_name as 'Doctor_Name',CONVERT(VARCHAR(10), D1.[MONTH]) +'-' + CONVERT(VARCHAR(10), D1.[YEAR])  as [MONTH],ISNULL(V1.Appointments,0) as 'Appointments' from 
+select D1.Doctor_name as 'Doctor_Name',CONVERT(VARCHAR(10), D1.[MONTH]) +'-' + CONVERT(VARCHAR(10), D1.[YEAR])  as [MONTH],ISNULL(V1.Appointments,0) as 'Appointments' from 
 
 (
 
 select * from 
-(select Dpctor_name  from Doctors )T1
+(select Doctor_name  from Doctors )T1
 cross join 
 
 (select * from dbo.GetMonthsList(@NumberOfMonths)
@@ -39,7 +39,7 @@ cross join
 )D1
 left outer join [dbo].[DoctorAppointments] V1
 
-on D1.Dpctor_name = V1.Doctor_Name and D1.[MONTH]= V1.Month and D1.[YEAR]= V1.YEAR
+on D1.Doctor_name = V1.Doctor_Name and D1.[MONTH]= V1.Month and D1.[YEAR]= V1.YEAR
 
 order by D1.[MONTH],D1.[YEAR]
 
