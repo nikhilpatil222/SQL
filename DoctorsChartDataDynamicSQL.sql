@@ -13,7 +13,7 @@
 	 =============================================
 	*/
 
-ALTER PROCEDURE dbo.DoctorsChartData 
+CREATE PROCEDURE dbo.DoctorsChartData 
 @NumberOfMonths int
 as 
 BEGIN
